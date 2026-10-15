@@ -71,6 +71,14 @@
             <label for="itemDescription">Item Description</label>
             <textarea id="itemDescription" required></textarea>
 
+            <label for="itemId">Item ID</label>
+            <input type="text" id="itemId" name="itemId" required>
+            
+            <label for="itemUuid">Item UUID</label>
+            <input type="text" id="itemUuid" name="itemUuid" required>
+            
+            <label for="itemHash">Item Hash</label>
+<input type="text" id="itemHash" name="itemHash" required>
             <button type="submit">Submit Item</button>
         </form>
 
@@ -90,8 +98,17 @@
             const itemDescription =
                 document.getElementById("itemDescription").value.trim();
 
-            if (!itemName || !itemDescription) {
-                message.textContent = "Please fill in both fields.";
+            const itemId =
+                document.getElementById("itemDescription").value.trim();
+
+            const itemUuid =
+                document.getElementById("itemUuid").value.trim();
+
+            const itemHash =
+                document.getElementById("itemHash").value.trim();
+
+            if (!itemName || !itemDescription || !itemId || !itemUuid || !itemHash) {
+                message.textContent = "Please fill in all fields.";
                 return;
             }
 
@@ -103,7 +120,10 @@
                     },
                     body: JSON.stringify({
                         itemName: itemName,
-                        itemDescription: itemDescription
+                        itemDescription: itemDescription,
+                        itemId: itemId,
+                        itemUuid: itemUuid,
+                        itemHash: itemHash
                     })
                 });
 
