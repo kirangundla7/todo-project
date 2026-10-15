@@ -71,6 +71,9 @@
             <label for="itemDescription">Item Description</label>
             <textarea id="itemDescription" required></textarea>
 
+            <label for="itemId">Item ID</label>
+            <input type="text" id="itemId" name="itemId" required>
+            
             <button type="submit">Submit Item</button>
         </form>
 
@@ -90,8 +93,11 @@
             const itemDescription =
                 document.getElementById("itemDescription").value.trim();
 
-            if (!itemName || !itemDescription) {
-                message.textContent = "Please fill in both fields.";
+            const itemId =
+                document.getElementById("itemDescription").value.trim();
+
+            if (!itemName || !itemDescription || !itemId) {
+                message.textContent = "Please fill in all fields.";
                 return;
             }
 
@@ -103,7 +109,8 @@
                     },
                     body: JSON.stringify({
                         itemName: itemName,
-                        itemDescription: itemDescription
+                        itemDescription: itemDescription,
+                        itemId: itemId
                     })
                 });
 
