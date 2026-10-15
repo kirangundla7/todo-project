@@ -77,6 +77,8 @@
             <label for="itemUuid">Item UUID</label>
             <input type="text" id="itemUuid" name="itemUuid" required>
             
+            <label for="itemHash">Item Hash</label>
+<input type="text" id="itemHash" name="itemHash" required>
             <button type="submit">Submit Item</button>
         </form>
 
@@ -102,7 +104,10 @@
             const itemUuid =
                 document.getElementById("itemUuid").value.trim();
 
-            if (!itemName || !itemDescription || !itemId || !itemUuid) {
+            const itemHash =
+                document.getElementById("itemHash").value.trim();
+
+            if (!itemName || !itemDescription || !itemId || !itemUuid || !itemHash) {
                 message.textContent = "Please fill in all fields.";
                 return;
             }
@@ -117,7 +122,8 @@
                         itemName: itemName,
                         itemDescription: itemDescription,
                         itemId: itemId,
-                        itemUuid: itemUuid
+                        itemUuid: itemUuid,
+                        itemHash: itemHash
                     })
                 });
 
